@@ -73,20 +73,24 @@ with open(file_to_save, "w") as txt_file:
         # Write the county list to text file.
         txt_file.write(f"{county}: {vote_percentage:.1f}% ({votes:,})\n")
     
-    # Determine if the votes are greater than the winning count.
+        # Determine if the votes are greater than the winning count.
         if (votes > winning_count) and (vote_percentage > winning_percentage):
          # If true then set winning_count = votes and winning_percent = vote_percentage.
          winning_count = votes
          winning_percentage = vote_percentage
          # Set the largest_county equal to the county's name.
          largest_county = county
-
+ 
     #Write the largest county contributer to text file.
     largest_county_turnout = (
     f"\n-------------------------\n"
     f"Largest County Turnout: {largest_county}\n"
     f"-------------------------\n")
     txt_file.write(largest_county_turnout)
+
+    # Reset Winning Count Tracker
+    winning_count = 0
+    winning_percentage = 0
 
     # Retrieve vote count and percentage for each candidate.
     for candidate in candidate_votes:
